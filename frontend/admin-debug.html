@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Debug Panel | StockScope</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      padding: 40px 20px;
+      background: #f5f5f5;
+    }
+    .debug-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #432818;
+      margin-bottom: 10px;
+    }
+    .warning {
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      color: #856404;
+    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
+    .section h2 {
+      color: #432818;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+    .btn-danger:hover {
+      background: #c82333;
+    }
+    .btn-primary {
+      background: #d4a373;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #432818;
+    }
+    .btn-info {
+      background: #17a2b8;
+      color: white;
+    }
+    .btn-info:hover {
+      background: #138496;
+    }
+    #output {
+      background: #2d2d2d;
+      color: #00ff00;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      min-height: 200px;
+      max-height: 500px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #432818;
+      font-weight: 600;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .api-url {
+      background: #fff8e1;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #432818;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="debug-container">
+    <h1><i class="fas fa-tools"></i> Admin Debug Panel</h1>
+    <p style="color: #666; margin-bottom: 20px;">Development tools for testing and debugging</p>
+    
+    <div class="warning">
+      <i class="fas fa-exclamation-triangle"></i> <strong>Warning:</strong> This is a development tool only. Do not use in production!
+    </div>
+
+    <!-- API STATUS -->
+    <div class="section">
+      <h2><i class="fas fa-server"></i> API Status</h2>
+      <div class="api-url">Backend URL: http://localhost:8080/api</div>
+      <div class="btn-group">
+        <button class="btn btn-info" onclick="checkAPIStatus()">
+          <i class="fas fa-check-circle"></i> Check Backend Status
+        </button>
+      </div>
+    </div>
+
+    <!-- USER MANAGEMENT -->
+    <div class="section">
+      <h2><i class="fas fa-users"></i> User Management</h2>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="getAllUsers()">
+          <i class="fas fa-list"></i> List All Users
+        </button>
+        <button class="btn btn-info" onclick="countUsers()">
+          <i class="fas fa-calculator"></i> Count Users
+        </button>
+      </div>
+      
+      <h3 style="margin: 20px 0 10px 0; color: #432818;">Delete User by Phone</h3>
+      <div class="form-group">
+        <label>Phone Number:</label>
+        <input type="text" id="delete-phone" placeholder="Enter phone number (e.g., 8790918028)">
+      </div>
+      <button class="btn btn-danger" onclick="deleteUserByPhone()">
+        <i class="fas fa-trash"></i> Delete User
+      </button>
+    </div>
+
+    <!-- DATA MANAGEMENT -->
+    <div class="section">
+      <h2><i class="fas fa-database"></i> Data Management</h2>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="checkCourses()">
+          <i class="fas fa-book"></i> List Courses
+        </button>
+        <button class="btn btn-primary" onclick="checkBlogs()">
+          <i class="fas fa-newspaper"></i> List Blogs
+        </button>
+        <button class="btn btn-primary" onclick="checkDictionary()">
+          <i class="fas fa-book-open"></i> List Dictionary Terms
+        </button>
+      </div>
+    </div>
+
+    <!-- OUTPUT CONSOLE -->
+    <div class="section">
+      <h2><i class="fas fa-terminal"></i> Console Output</h2>
+      <button class="btn btn-info" onclick="clearOutput()" style="margin-bottom: 15px;">
+        <i class="fas fa-eraser"></i> Clear Output
+      </button>
+      <div id="output">Ready... Waiting for commands...</div>
+    </div>
+  </div>
+
+  <script src="js/api-service.js"></script>
+  <script>
+    const API_BASE_URL = 'http://localhost:8080/api';
+    
+    function log(message, type = 'info') {
+      const output = document.getElementById('output');
+      const timestamp = new Date().toLocaleTimeString();
+      const icon = type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️';
+      output.innerHTML += `\n[${timestamp}] ${icon} ${message}`;
+      output.scrollTop = output.scrollHeight;
+    }
+    
+    function clearOutput() {
+      document.getElementById('output').innerHTML = 'Console cleared...';
+    }
+
+    async function makeRequest(url, method = 'GET', body = null) {
+      try {
+        const options = {
+          method,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        };
+        
+        if (body) {
+          options.body = JSON.stringify(body);
+        }
+        
+        log(`Making ${method} request to: ${url}`);
+        const response = await fetch(url, options);
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(JSON.stringify(data));
+        }
+        
+        return data;
+      } catch (error) {
+        log(`Error: ${error.message}`, 'error');
+        throw error;
+      }
+    }
+
+    async function checkAPIStatus() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/users`);
+        if (response.ok) {
+          log('✅ Backend is ONLINE and responding!', 'success');
+        } else {
+          log(`Backend responded with status: ${response.status}`, 'error');
+        }
+      } catch (error) {
+        log('❌ Backend is OFFLINE or unreachable!', 'error');
+        log(`Error: ${error.message}`, 'error');
+      }
+    }
+
+    async function getAllUsers() {
+      try {
+        const users = await makeRequest(`${API_BASE_URL}/users`);
+        log('=== ALL USERS ===', 'success');
+        if (users && users.length > 0) {
+          users.forEach((user, index) => {
+            log(`\n${index + 1}. Name: ${user.name}`);
+            log(`   Email: ${user.email}`);
+            log(`   Phone: ${user.phone}`);
+            log(`   Role: ${user.role}`);
+            log(`   ID: ${user.id || user._id}`);
+          });
+          log(`\nTotal: ${users.length} users found`, 'success');
+        } else {
+          log('No users found in database', 'info');
+        }
+      } catch (error) {
+        log('Failed to fetch users', 'error');
+      }
+    }
+
+    async function countUsers() {
+      try {
+        const users = await makeRequest(`${API_BASE_URL}/users`);
+        log(`Total Users in Database: ${users ? users.length : 0}`, 'success');
+      } catch (error) {
+        log('Failed to count users', 'error');
+      }
+    }
+
+    async function deleteUserByPhone() {
+      const phone = document.getElementById('delete-phone').value.trim();
+      
+      if (!phone) {
+        log('Please enter a phone number', 'error');
+        return;
+      }
+      
+      if (!confirm(`Are you sure you want to delete user with phone: ${phone}?`)) {
+        log('Delete operation cancelled');
+        return;
+      }
+      
+      try {
+        // First, get all users to find the one with this phone
+        const users = await makeRequest(`${API_BASE_URL}/users`);
+        const user = users.find(u => u.phone === phone);
+        
+        if (!user) {
+          log(`No user found with phone number: ${phone}`, 'error');
+          return;
+        }
+        
+        // Delete the user
+        const userId = user.id || user._id;
+        await makeRequest(`${API_BASE_URL}/users/${userId}`, 'DELETE');
+        log(`✅ Successfully deleted user: ${user.name} (${user.email})`, 'success');
+        document.getElementById('delete-phone').value = '';
+        
+      } catch (error) {
+        log(`Failed to delete user with phone: ${phone}`, 'error');
+      }
+    }
+
+    async function checkCourses() {
+      try {
+        const courses = await makeRequest(`${API_BASE_URL}/courses`);
+        log('=== ALL COURSES ===', 'success');
+        if (courses && courses.length > 0) {
+          courses.forEach((course, index) => {
+            log(`\n${index + 1}. ${course.title}`);
+            log(`   Category: ${course.category}`);
+            log(`   Duration: ${course.duration || 'N/A'}`);
+          });
+          log(`\nTotal: ${courses.length} courses`, 'success');
+        } else {
+          log('No courses found in database', 'info');
+        }
+      } catch (error) {
+        log('Failed to fetch courses', 'error');
+      }
+    }
+
+    async function checkBlogs() {
+      try {
+        const blogs = await makeRequest(`${API_BASE_URL}/blogs`);
+        log('=== ALL BLOGS ===', 'success');
+        if (blogs && blogs.length > 0) {
+          blogs.forEach((blog, index) => {
+            log(`\n${index + 1}. ${blog.title}`);
+            log(`   Category: ${blog.category}`);
+            log(`   Author: ${blog.author}`);
+          });
+          log(`\nTotal: ${blogs.length} blogs`, 'success');
+        } else {
+          log('No blogs found in database', 'info');
+        }
+      } catch (error) {
+        log('Failed to fetch blogs', 'error');
+      }
+    }
+
+    async function checkDictionary() {
+      try {
+        const terms = await makeRequest(`${API_BASE_URL}/dictionary`);
+        log('=== ALL DICTIONARY TERMS ===', 'success');
+        if (terms && terms.length > 0) {
+          terms.forEach((term, index) => {
+            const termName = term.termName || term.term || 'Unknown';
+            log(`\n${index + 1}. ${termName}`);
+            log(`   Category: ${term.category || 'N/A'}`);
+          });
+          log(`\nTotal: ${terms.length} terms`, 'success');
+        } else {
+          log('No terms found in database', 'info');
+        }
+      } catch (error) {
+        log('Failed to fetch dictionary terms', 'error');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Plans | StockScope</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/subscription.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/019/535/433/original/animated-green-arrow-rising-up-stock-market-increasing-graph-flat-cartoon-style-element-4k-footage-color-illustration-on-white-background-with-alpha-channel-transparency-for-animation-video.jpg" alt="StockScope Logo">
+        <h1>StockScope</h1>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="dictionary.html">Dictionary</a></li>
+          <li><a href="subscription.html" class="active">Subscription</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <select>
+          <option>EN</option>
+          <option>HI</option>
+        </select>
+        <div class="user-menu">
+          <button class="user-btn" onclick="toggleUserMenu()">
+            <i class="fa-regular fa-user"></i>
+            <span id="user-name">User</span>
+          </button>
+          <div class="user-dropdown" id="user-dropdown">
+            <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SUBSCRIPTION HERO ================= -->
+  <section class="subscription-hero">
+    <div class="container">
+      <h1><i class="fas fa-crown"></i> Choose Your Learning Plan</h1>
+      <p>Unlock premium features and accelerate your financial education journey</p>
+      
+      <div class="billing-toggle">
+        <span class="billing-label">Monthly</span>
+        <label class="switch">
+          <input type="checkbox" id="billing-toggle" onchange="toggleBilling()">
+          <span class="slider"></span>
+        </label>
+        <span class="billing-label">Yearly <span class="save-badge">Save 20%</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING PLANS ================= -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-grid">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+          <div class="plan-header">
+            <h3>Free</h3>
+            <p>Get started with basics</p>
+          </div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">0</span>
+            <span class="period">/month</span>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 3 Free Courses</li>
+            <li><i class="fas fa-check"></i> Limited Blog Access</li>
+            <li><i class="fas fa-check"></i> Basic Dictionary</li>
+            <li class="disabled"><i class="fas fa-times"></i> Live Market Updates</li>
+            <li class="disabled"><i class="fas fa-times"></i> Expert Webinars</li>
+            <li class="disabled"><i class="fas fa-times"></i> Priority Support</li>
+          </ul>
+          <button class="plan-btn" disabled>Current Plan</button>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <div class="plan-header">
+            <h3>Premium</h3>
+            <p>For serious learners</p>
+          </div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount" data-monthly="499" data-yearly="4790">499</span>
+            <span class="period">/month</span>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Unlimited Courses</li>
+            <li><i class="fas fa-check"></i> Full Blog Access</li>
+            <li><i class="fas fa-check"></i> Complete Dictionary</li>
+            <li><i class="fas fa-check"></i> Live Market Updates</li>
+            <li><i class="fas fa-check"></i> 5 Expert Webinars/month</li>
+            <li><i class="fas fa-check"></i> Priority Support</li>
+          </ul>
+          <button class="plan-btn primary" onclick="subscribeToPlan('PREMIUM')">
+            <i class="fas fa-rocket"></i> Upgrade to Premium
+          </button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card">
+          <div class="plan-header">
+            <h3>Pro</h3>
+            <p>For trading professionals</p>
+          </div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount" data-monthly="999" data-yearly="9590">999</span>
+            <span class="period">/month</span>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Everything in Premium</li>
+            <li><i class="fas fa-check"></i> Advanced Trading Courses</li>
+            <li><i class="fas fa-check"></i> 1-on-1 Mentorship</li>
+            <li><i class="fas fa-check"></i> Real-time Alerts</li>
+            <li><i class="fas fa-check"></i> Unlimited Webinars</li>
+            <li><i class="fas fa-check"></i> 24/7 VIP Support</li>
+          </ul>
+          <button class="plan-btn" onclick="subscribeToPlan('PRO')">
+            <i class="fas fa-star"></i> Get Pro Access
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES COMPARISON ================= -->
+  <section class="comparison-section">
+    <div class="container">
+      <h2>Compare All Features</h2>
+      <div class="comparison-table-container">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Features</th>
+              <th>Free</th>
+              <th>Premium</th>
+              <th>Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Access to Courses</td>
+              <td>3 Courses</td>
+              <td>Unlimited</td>
+              <td>Unlimited + Advanced</td>
+            </tr>
+            <tr>
+              <td>Blog Articles</td>
+              <td>10/month</td>
+              <td>Unlimited</td>
+              <td>Unlimited + Exclusive</td>
+            </tr>
+            <tr>
+              <td>Financial Dictionary</td>
+              <td><i class="fas fa-check"></i></td>
+              <td><i class="fas fa-check"></i></td>
+              <td><i class="fas fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Live Market Updates</td>
+              <td><i class="fas fa-times"></i></td>
+              <td><i class="fas fa-check"></i></td>
+              <td><i class="fas fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Expert Webinars</td>
+              <td><i class="fas fa-times"></i></td>
+              <td>5/month</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>1-on-1 Mentorship</td>
+              <td><i class="fas fa-times"></i></td>
+              <td><i class="fas fa-times"></i></td>
+              <td><i class="fas fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td>Email</td>
+              <td>Priority Email</td>
+              <td>24/7 VIP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4><i class="fas fa-question-circle"></i> Can I cancel anytime?</h4>
+          <p>Yes, you can cancel your subscription at any time. You'll continue to have access until the end of your billing period.</p>
+        </div>
+        <div class="faq-item">
+          <h4><i class="fas fa-question-circle"></i> What payment methods do you accept?</h4>
+          <p>We accept all major credit/debit cards, UPI, net banking, and digital wallets.</p>
+        </div>
+        <div class="faq-item">
+          <h4><i class="fas fa-question-circle"></i> Is there a free trial?</h4>
+          <p>Yes! New users get 7 days free trial on Premium and Pro plans.</p>
+        </div>
+        <div class="faq-item">
+          <h4><i class="fas fa-question-circle"></i> Can I upgrade later?</h4>
+          <p>Absolutely! You can upgrade your plan anytime and pay only the prorated difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="dashboard-footer">
+    <div class="container">
+      <p>&copy; 2025 StockScope. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script src="js/api-service.js"></script>
+  <script src="js/subscription.js"></script>
+</body>
+</html>

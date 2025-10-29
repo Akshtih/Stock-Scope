@@ -1,0 +1,34 @@
+# Compiled class files
+*.class
+target/
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Application properties (contains sensitive data)
+# Uncomment if you want to ignore credentials
+# src/main/resources/application.properties
+
+# Test coverage
+coverage/

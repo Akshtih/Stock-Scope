@@ -1,0 +1,875 @@
+{
+	"info": {
+		"_postman_id": "stockscope-api-collection",
+		"name": "StockScope API Collection",
+		"description": "Complete API testing collection for StockScope Backend - Stock Market Learning Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Courses API",
+			"item": [
+				{
+					"name": "Get All Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses"]
+						}
+					}
+				},
+				{
+					"name": "Get Active Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/courses/active",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses", "active"]
+						}
+					}
+				},
+				{
+					"name": "Get Courses by Category - Novice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/courses/category/Novice",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses", "category", "Novice"]
+						}
+					}
+				},
+				{
+					"name": "Get Courses by Difficulty",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/courses/difficulty/Beginner",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses", "difficulty", "Beginner"]
+						}
+					}
+				},
+				{
+					"name": "Get Course by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/courses/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses", "{id}"]
+						},
+						"description": "Replace {id} with actual course ID"
+					}
+				},
+				{
+					"name": "Create Course - Novice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Stock Market Fundamentals\",\n  \"description\": \"Learn the basic concepts of stock market investing including stocks, bonds, and mutual funds\",\n  \"category\": \"Novice\",\n  \"imageUrl\": \"https://www.5paisa.com/finschool/wp-content/uploads/2021/10/pana-1.svg\",\n  \"difficulty\": \"Beginner\",\n  \"duration\": 120,\n  \"isActive\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses"]
+						}
+					}
+				},
+				{
+					"name": "Create Course - Investor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Value Investing Strategies\",\n  \"description\": \"Master the art of value investing with Warren Buffett's proven strategies\",\n  \"category\": \"Investor\",\n  \"imageUrl\": \"https://www.5paisa.com/finschool/wp-content/uploads/2025/07/Investor-courses-cat.png\",\n  \"difficulty\": \"Intermediate\",\n  \"duration\": 180,\n  \"isActive\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses"]
+						}
+					}
+				},
+				{
+					"name": "Create Course - Trader",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Technical Analysis & Chart Patterns\",\n  \"description\": \"Advanced trading techniques using technical indicators and chart patterns\",\n  \"category\": \"Trader\",\n  \"imageUrl\": \"https://www.5paisa.com/finschool/wp-content/uploads/2025/07/trader-courses-cat.png\",\n  \"difficulty\": \"Advanced\",\n  \"duration\": 240,\n  \"isActive\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/courses",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses"]
+						}
+					}
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Course Title\",\n  \"description\": \"Updated description\",\n  \"category\": \"Novice\",\n  \"imageUrl\": \"https://example.com/image.jpg\",\n  \"difficulty\": \"Intermediate\",\n  \"duration\": 150,\n  \"isActive\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/courses/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses", "{id}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/courses/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "courses", "{id}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Blogs API",
+			"item": [
+				{
+					"name": "Get All Blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs"]
+						}
+					}
+				},
+				{
+					"name": "Get Published Blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/published",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs", "published"]
+						}
+					}
+				},
+				{
+					"name": "Get Blogs by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/category/Blogs",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs", "category", "Blogs"]
+						}
+					}
+				},
+				{
+					"name": "Get Blogs by Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/author/StockScope Team",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs", "author", "StockScope Team"]
+						}
+					}
+				},
+				{
+					"name": "Get Blog by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs", "{id}"]
+						}
+					}
+				},
+				{
+					"name": "Create Blog - Blogs Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Understanding Bull and Bear Markets\",\n  \"content\": \"In this comprehensive guide, we explore the characteristics of bull and bear markets, how to identify them, and strategies to navigate through different market conditions. Learn about investor psychology, market indicators, and practical tips for maximizing returns during bullish and bearish trends.\",\n  \"category\": \"Blogs\",\n  \"author\": \"StockScope Team\",\n  \"imageUrl\": \"https://static.vecteezy.com/system/resources/previews/003/042/125/original/content-writer-or-blogger-start-new-blog-writing-article-online-vector.jpg\",\n  \"summary\": \"A detailed guide to understanding market cycles and trends\",\n  \"readTime\": 8,\n  \"isPublished\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs"]
+						}
+					}
+				},
+				{
+					"name": "Create Blog - What's Brewing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"What's Happening in IPO Markets?\",\n  \"content\": \"The latest trends in Initial Public Offerings (IPOs) and what investors should watch out for in the current market scenario. Discover upcoming IPOs, success stories, and market analysis.\",\n  \"category\": \"What's Brewing\",\n  \"author\": \"Market Analyst\",\n  \"imageUrl\": \"https://www.5paisa.com/finschool/wp-content/uploads/2023/06/2-1.svg\",\n  \"summary\": \"Stay updated with the latest IPO market trends\",\n  \"readTime\": 5,\n  \"isPublished\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs"]
+						}
+					}
+				},
+				{
+					"name": "Create Blog - Stories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Story of a First-Time Investor\",\n  \"content\": \"Follow Raj's journey from a complete novice to a confident investor. Learn from his mistakes and successes as he navigates the world of stock market investing.\",\n  \"category\": \"Stories\",\n  \"author\": \"StockScope Team\",\n  \"imageUrl\": \"https://www.5paisa.com/finschool/wp-content/uploads/2023/06/1-1.svg\",\n  \"summary\": \"An inspiring story of financial learning\",\n  \"readTime\": 6,\n  \"isPublished\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs"]
+						}
+					}
+				},
+				{
+					"name": "Update Blog",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Blog Title\",\n  \"content\": \"Updated content\",\n  \"category\": \"Blogs\",\n  \"author\": \"Updated Author\",\n  \"imageUrl\": \"https://example.com/image.jpg\",\n  \"summary\": \"Updated summary\",\n  \"readTime\": 10,\n  \"isPublished\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs", "{id}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Blog",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/blogs/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "blogs", "{id}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Dictionary API",
+			"item": [
+				{
+					"name": "Get All Terms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary"]
+						}
+					}
+				},
+				{
+					"name": "Search Terms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary/search?q=bull",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary", "search"],
+							"query": [
+								{
+									"key": "q",
+									"value": "bull"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Terms by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary/category/Stock Market",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary", "category", "Stock Market"]
+						}
+					}
+				},
+				{
+					"name": "Get Exact Term",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary/term/Bull Market",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary", "term", "Bull Market"]
+						}
+					}
+				},
+				{
+					"name": "Get Term by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary", "{id}"]
+						}
+					}
+				},
+				{
+					"name": "Add Term - Bull Market",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"term\": \"Bull Market\",\n  \"definition\": \"A financial market condition where prices are rising or are expected to rise. Bull markets are characterized by optimism, investor confidence, and expectations that strong results should continue.\",\n  \"category\": \"Market Conditions\",\n  \"example\": \"The stock market experienced a strong bull market throughout 2021, with major indices reaching all-time highs.\",\n  \"relatedTerms\": \"Bear Market, Market Rally, Uptrend\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary"]
+						}
+					}
+				},
+				{
+					"name": "Add Term - Dividend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"term\": \"Dividend\",\n  \"definition\": \"A portion of a company's earnings distributed to shareholders, usually paid quarterly. Dividends can be issued as cash payments, shares of stock, or other property.\",\n  \"category\": \"Stock Market\",\n  \"example\": \"Apple Inc. paid a dividend of $0.24 per share in the last quarter.\",\n  \"relatedTerms\": \"Dividend Yield, Ex-Dividend Date, Dividend Aristocrat\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary"]
+						}
+					}
+				},
+				{
+					"name": "Add Term - P/E Ratio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"term\": \"P/E Ratio\",\n  \"definition\": \"Price-to-Earnings ratio is a valuation metric that compares a company's current share price to its per-share earnings. It helps investors determine if a stock is overvalued or undervalued.\",\n  \"category\": \"Fundamental Analysis\",\n  \"example\": \"A stock trading at $50 per share with earnings of $5 per share has a P/E ratio of 10.\",\n  \"relatedTerms\": \"EPS, Valuation, Market Cap\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary"]
+						}
+					}
+				},
+				{
+					"name": "Add Term - IPO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"term\": \"IPO\",\n  \"definition\": \"Initial Public Offering - the first time a company offers its shares to the public for purchase. This allows the company to raise capital from public investors.\",\n  \"category\": \"Stock Market\",\n  \"example\": \"Zomato went public with an IPO in July 2021, raising over ₹9,000 crores.\",\n  \"relatedTerms\": \"Primary Market, Secondary Market, Public Listing\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary"]
+						}
+					}
+				},
+				{
+					"name": "Update Term",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"term\": \"Updated Term\",\n  \"definition\": \"Updated definition\",\n  \"category\": \"Updated Category\",\n  \"example\": \"Updated example\",\n  \"relatedTerms\": \"Updated related terms\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary", "{id}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Term",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dictionary/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "dictionary", "{id}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "User API",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users"]
+						}
+					}
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users", "{id}"]
+						}
+					}
+				},
+				{
+					"name": "Get User by Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/email/john.doe@example.com",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users", "email", "john.doe@example.com"]
+						}
+					}
+				},
+				{
+					"name": "Register User - Novice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"mobile\": \"+919876543210\",\n  \"password\": \"securePassword123\",\n  \"userType\": \"Novice\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/register",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users", "register"]
+						}
+					}
+				},
+				{
+					"name": "Register User - Investor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane.smith@example.com\",\n  \"mobile\": \"+919876543211\",\n  \"password\": \"myPassword456\",\n  \"userType\": \"Investor\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/register",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mobile\": \"+919876543210\",\n  \"password\": \"securePassword123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/login",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users", "login"]
+						}
+					}
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Updated\",\n  \"email\": \"john.updated@example.com\",\n  \"mobile\": \"+919876543210\",\n  \"userType\": \"Investor\",\n  \"isActive\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users", "{id}"]
+						}
+					}
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "users", "{id}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Subscription API",
+			"item": [
+				{
+					"name": "Get All Subscriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/subscriptions",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "subscriptions"]
+						}
+					}
+				},
+				{
+					"name": "Get Active Subscriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/subscriptions/active",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "subscriptions", "active"]
+						}
+					}
+				},
+				{
+					"name": "Subscribe Email 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"subscriber@example.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/subscriptions",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "subscriptions"]
+						}
+					}
+				},
+				{
+					"name": "Subscribe Email 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test.user@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/subscriptions",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "subscriptions"]
+						}
+					}
+				},
+				{
+					"name": "Subscribe Email 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"investor123@yahoo.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/subscriptions",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "subscriptions"]
+						}
+					}
+				},
+				{
+					"name": "Unsubscribe Email",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"subscriber@example.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/subscriptions/unsubscribe",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "subscriptions", "unsubscribe"]
+						}
+					}
+				},
+				{
+					"name": "Delete Subscription",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/subscriptions/{id}",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "subscriptions", "{id}"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
