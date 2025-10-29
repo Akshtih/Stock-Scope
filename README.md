@@ -2,6 +2,12 @@
 
 A comprehensive full-stack web application for stock market education, featuring courses, blogs, financial dictionary, and subscription management.
 
+## 🌐 Live Application
+
+- **Frontend**: https://boisterous-mochi-cfb18f.netlify.app
+- **Backend API**: https://stock-scope-mmc0.onrender.com
+- **Dashboard**: https://boisterous-mochi-cfb18f.netlify.app/dashboard.html
+
 ---
 
 ## 📁 Project Structure
@@ -264,12 +270,12 @@ java -jar target/stockscope-0.0.1-SNAPSHOT.jar
 
 ## 📦 Deployment
 
-See detailed deployment instructions in `DEPLOYMENT-GUIDE.md` (coming soon)
+**✅ Currently Deployed:**
+- **Frontend**: Netlify - https://boisterous-mochi-cfb18f.netlify.app
+- **Backend**: Render (Free Tier) - https://stock-scope-mmc0.onrender.com
+- **Database**: MongoDB Atlas (Cloud)
 
-**Quick Deploy:**
-- **Backend**: Render, Railway, or Heroku
-- **Frontend**: Netlify, Vercel, or GitHub Pages
-- **Database**: MongoDB Atlas (already configured)
+**Note**: Backend may take 30-60 seconds to wake up from sleep on first request (free tier limitation).
 
 ---
 

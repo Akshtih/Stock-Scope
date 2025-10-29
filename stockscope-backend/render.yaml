@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: stockscope-backend
+    env: java
+    buildCommand: mvn clean install -DskipTests
+    startCommand: java -jar target/stockscope-backend-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: JAVA_OPTS
+        value: -Xmx512m
+      - key: SPRING_PROFILES_ACTIVE
+        value: production

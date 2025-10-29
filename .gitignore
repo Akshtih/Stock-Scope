@@ -1,0 +1,42 @@
+# Backend - Maven
+stockscope-backend/target/
+stockscope-backend/.mvn/
+stockscope-backend/mvnw
+stockscope-backend/mvnw.cmd
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+*.env
+
+# Build files
+build/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
