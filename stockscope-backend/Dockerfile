@@ -3,11 +3,11 @@ FROM maven:3.9.5-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copy pom.xml and download dependencies
-COPY pom.xml .
+COPY stockscope-backend/pom.xml .
 RUN mvn dependency:go-offline -B
 
 # Copy source code and build
-COPY src ./src
+COPY stockscope-backend/src ./src
 RUN mvn clean package -DskipTests
 
 # Runtime stage
